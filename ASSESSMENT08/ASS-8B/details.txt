@@ -1,0 +1,58 @@
+Microsoft SQL Server 2019 Express : 
+https://www.microsoft.com/en-us/download/details/aspx?id=101064
+
+SQL Server Management System(SSMS) : download 
+https://learn.microsoft.com/en-us/ssms/download-sql-server-management-studio-ssms#download-ssms
+
+
+
+How to run Microsoft SQL Server in MAC ? Using docker 
+As per the Microsoft we cannot directly install MS Sql to the Mac
+
+Steps are follows 
+1. Download and install docker on the Mac device (create a docker account, then we can run image on docker)
+2. Install Mysql as a client (Download Azure data studio)
+3. Download Microsoft sql server image for the docker (Microsoft/azure edge docker image)
+docker pull mcr.microsoft.com/azure-sql-edge
+
+docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_PID=Premium' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge
+
+Username (ID): sa
+Password: yourStrong(!)Password
+
+
+66729e8b35a5c2f006da9eac1574dc14e9fd470bf0c01c9352bb228409d96a0d
+
+
+4. 
+
+
+
+MSSQL_SA_PASSWORD=MyPassword#321
+MSSQL_PID=Developer
+MSSQL_USER=SA
+
+
+3fa1e243b038d189c247b8c6bbcb28ee4efcbc35d58fa81f4479d70ffc334336
+
+
+docker run --cap-add SYS_PTRACE -e "ACCEPT_EULA=1" -e "MSSQL_SA_PASSWORD=MyPassword#321" -e "MSSQL_PID=Developer" -e "MSSQL_USER=SA" -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge
+
+
+
+
+dotnet new console -n SqlDemoApp
+cd SqlDemoApp
+
+
+dotnet add package System.Data.SqlClient
+
+
+string connectionString = "Server=localhost,1433;User ID=SA;Password=MyPassword#321;Encrypt=True;TrustServerCertificate=True;";
+
+
+string connectionString = "Server=localhost,1433;Database=TestDB;User ID=SA;Password=MyPassword#321;Encrypt=True;TrustServerCertificate=True;";
+
+
+
+
